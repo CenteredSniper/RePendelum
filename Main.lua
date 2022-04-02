@@ -1,9 +1,11 @@
 local getsynassetfromurl = loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/getsynassetfromurl.lua"))()
+
 local Scripts = {
 	["NAMEHERE"] = {
 		["Link"] = "rawlinkhere",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
-		["HatID"] = "id1,id2,etc."
+		["HatID"] = "id1,id2,etc.",
+		["Remastered"] = false
 	},
 }
 
@@ -93,6 +95,7 @@ for i,v in pairs(Scripts) do
 	NewClone.Visible = true
 	NewClone.Name = i
 	NewClone.Text = i
+	NewClone.TextColor3 = v["Remastered"] and Color3.new(0,1,0) or Color3.new(1,0,0)
 	NewClone.Activated:Connect(function()
 		if Selected == i then
 			reanimate()
