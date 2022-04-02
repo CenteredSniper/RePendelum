@@ -25,6 +25,12 @@ local Scripts = {
 		["HatID"] = "",
 		["Remastered"] = false
 	},
+	["Sniper"] = {
+		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Sniper.lua",
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
+		["HatID"] = "5063578607",
+		["Remastered"] = false
+	},
 }
 
 local GUI = game:GetObjects("rbxassetid://9260677580")[1]--script.Parent
