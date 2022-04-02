@@ -9,7 +9,7 @@ local Scripts = {
 	},
 	["SpectrumGlitcher"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/SpectrumGlitcher.lua",
-		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/959886609824747581/unknown.png"),
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/959887401621282816/SpectrumGlitcher.png"),
 		["HatID"] = "",
 		["Remastered"] = false
 	},
