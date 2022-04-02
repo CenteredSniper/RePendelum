@@ -1,11 +1,11 @@
 local getsynassetfromurl = loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/getsynassetfromurl.lua"))()
 
 local Scripts = {
-	["NAMEHERE"] = {
+	["NameHere"] = {
 		["Link"] = "rawlinkhere",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
 		["HatID"] = "id1,id2,etc.",
-		["Remastered"] = false
+		["Remastered"] = true
 	},
 	["SpectrumGlitcher"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/SpectrumGlitcher.lua",
