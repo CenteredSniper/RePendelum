@@ -7,6 +7,12 @@ local Scripts = {
 		["HatID"] = "id1,id2,etc.",
 		["Remastered"] = false
 	},
+	["SpectrumGlitcher"] = {
+		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/SpectrumGlitcher.lua",
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
+		["HatID"] = "",
+		["Remastered"] = false
+	},
 }
 
 local GUI = game:GetObjects("rbxassetid://9260677580")[1]--script.Parent
