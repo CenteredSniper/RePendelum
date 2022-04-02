@@ -1,17 +1,12 @@
+local mouse = game.Players.LocalPlayer:GetMouse()
+local Mouse = mouse
 
--- nebula's ezconvert
---[[
-PUT YOUR SCRIPTS BELOW HERE VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV	
-]]
-
---Hacker X Smol hacker edit by InfiniteOneWithdank
-
-
+wait(0.2)
 
 local plr = game:service'Players'.LocalPlayer
 print('Local User is '..plr.Name)
 print('Hacker Loaded')
-local mouse = game.Players.LocalPlayer:GetMouse()
+local mouse = plr:GetMouse()
 local char = plr.Character
 local hum = char:FindFirstChildOfClass'Humanoid'
 local hed = char.Head
@@ -220,14 +215,162 @@ end
 function rayCast(Position, Direction, Range, Ignore)
 	return game:service("Workspace"):FindPartOnRay(Ray.new(Position, Direction.unit * (Range or 999.999)), Ignore)
 end
-local RbxUtility = LoadLibrary("RbxUtility")
-local Create = RbxUtility.Create
+
+local Create = loadstring(game:GetObjects("rbxassetid://5425999987")[1].Source)()
 
 -------------------------------------------------------
 --Start Damage Function--
 -------------------------------------------------------
 function Damage(Part, hit, minim, maxim, knockback, Type, Property, Delay, HitSound, HitPitch)
-print("oh no he died")
+	if hit.Parent == nil then
+		return
+	end
+	local h = hit.Parent:FindFirstChildOfClass("Humanoid")
+	for _, v in pairs(hit.Parent:children()) do
+		if v:IsA("Humanoid") then
+			h = v
+		end
+	end
+         if h ~= nil and hit.Parent.Name ~= char.Name and hit.Parent:FindFirstChild("UpperTorso") ~= nil then
+	
+         hit.Parent:FindFirstChild("Head"):BreakJoints()
+         end
+
+	if h ~= nil and hit.Parent.Name ~= char.Name and hit.Parent:FindFirstChild("Torso") ~= nil then
+		if hit.Parent:findFirstChild("DebounceHit") ~= nil then
+			if hit.Parent.DebounceHit.Value == true then
+				return
+			end
+		end
+         if insta == true then
+         hit.Parent:FindFirstChild("Head"):BreakJoints()
+         end
+		local c = Create("ObjectValue"){
+			Name = "creator",
+			Value = game.Players:GetPlayerFromCharacter(script.Parent),
+			Parent = h,
+		}
+		game:GetService("Debris"):AddItem(c, .5)
+		if HitSound ~= nil and HitPitch ~= nil then
+			CFuncs.Sound.Create(HitSound, hit, 1, HitPitch) 
+		end
+		local Damage = math.random(minim, maxim)
+		local blocked = false
+		local block = hit.Parent:findFirstChild("Block")
+		if block ~= nil then
+			if block.className == "IntValue" then
+				if block.Value > 0 then
+					blocked = true
+					block.Value = block.Value - 1
+					print(block.Value)
+				end
+			end
+		end
+		if blocked == false then
+			h.Health = h.Health - Damage
+			ShowDamage((Part.CFrame * CFrame.new(0, 0, (Part.Size.Z / 2)).p + Vector3.new(0, 1.5, 0)), -Damage, 1.5, tors.BrickColor.Color)
+		else
+			h.Health = h.Health - (Damage / 2)
+			ShowDamage((Part.CFrame * CFrame.new(0, 0, (Part.Size.Z / 2)).p + Vector3.new(0, 1.5, 0)), -Damage, 1.5, tors.BrickColor.Color)
+		end
+		if Type == "Knockdown" then
+			local hum = hit.Parent.Humanoid
+			hum.PlatformStand = true
+			coroutine.resume(coroutine.create(function(HHumanoid)
+				swait(1)
+				HHumanoid.PlatformStand = false
+			end), hum)
+			local angle = (hit.Position - (Property.Position + Vector3.new(0, 0, 0))).unit
+			local bodvol = Create("BodyVelocity"){
+				velocity = angle * knockback,
+				P = 5000,
+				maxForce = Vector3.new(8e+003, 8e+003, 8e+003),
+				Parent = hit,
+			}
+			local rl = Create("BodyAngularVelocity"){
+				P = 3000,
+				maxTorque = Vector3.new(500000, 500000, 500000) * 50000000000000,
+				angularvelocity = Vector3.new(math.random(-10, 10), math.random(-10, 10), math.random(-10, 10)),
+				Parent = hit,
+			}
+			game:GetService("Debris"):AddItem(bodvol, .5)
+			game:GetService("Debris"):AddItem(rl, .5)
+		elseif Type == "Normal" then
+			local vp = Create("BodyVelocity"){
+				P = 500,
+				maxForce = Vector3.new(math.huge, 0, math.huge),
+				velocity = Property.CFrame.lookVector * knockback + Property.Velocity / 1.05,
+			}
+			if knockback > 0 then
+				vp.Parent = hit.Parent.Torso
+			end
+			game:GetService("Debris"):AddItem(vp, .5)
+		elseif Type == "Up" then
+			local bodyVelocity = Create("BodyVelocity"){
+				velocity = Vector3.new(0, 20, 0),
+				P = 5000,
+				maxForce = Vector3.new(8e+003, 8e+003, 8e+003),
+				Parent = hit,
+			}
+			game:GetService("Debris"):AddItem(bodyVelocity, .5)
+		elseif Type == "DarkUp" then
+			coroutine.resume(coroutine.create(function()
+				for i = 0, 1, 0.1 do
+					swait()
+					Effects.Block.Create(BrickColor.new("Black"), hit.Parent.Torso.CFrame, 5, 5, 5, 1, 1, 1, .08, 1)
+				end
+			end))
+			local bodyVelocity = Create("BodyVelocity"){
+				velocity = Vector3.new(0, 20, 0),
+				P = 5000,
+				maxForce = Vector3.new(8e+003, 8e+003, 8e+003),
+				Parent = hit,
+			}
+			game:GetService("Debris"):AddItem(bodyVelocity, 1)
+		elseif Type == "Snare" then
+			local bp = Create("BodyPosition"){
+				P = 2000,
+				D = 100,
+				maxForce = Vector3.new(math.huge, math.huge, math.huge),
+				position = hit.Parent.Torso.Position,
+				Parent = hit.Parent.Torso,
+			}
+			game:GetService("Debris"):AddItem(bp, 1)
+		elseif Type == "Freeze" then
+			local BodPos = Create("BodyPosition"){
+				P = 50000,
+				D = 1000,
+				maxForce = Vector3.new(math.huge, math.huge, math.huge),
+				position = hit.Parent.Torso.Position,
+				Parent = hit.Parent.Torso,
+			}
+			local BodGy = Create("BodyGyro") {
+				maxTorque = Vector3.new(4e+005, 4e+005, 4e+005) * math.huge ,
+				P = 20e+003,
+				Parent = hit.Parent.Torso,
+				cframe = hit.Parent.Torso.CFrame,
+			}
+			hit.Parent.Torso.Anchored = true
+			coroutine.resume(coroutine.create(function(Part) 
+				swait(1.5)
+				Part.Anchored = false
+			end), hit.Parent.Torso)
+			game:GetService("Debris"):AddItem(BodPos, 3)
+			game:GetService("Debris"):AddItem(BodGy, 3)
+		end
+		local debounce = Create("BoolValue"){
+			Name = "DebounceHit",
+			Parent = hit.Parent,
+			Value = true,
+		}
+		game:GetService("Debris"):AddItem(debounce, Delay)
+		c = Create("ObjectValue"){
+			Name = "creator",
+			Value = Player,
+			Parent = h,
+		}
+		game:GetService("Debris"):AddItem(c, .5)
+	end
 end
 -------------------------------------------------------
 --End Damage Function--
@@ -682,7 +825,77 @@ function Magic(bonuspeed, type, pos, scale, value, color, MType)
 end
 
 function Eviscerate(dude)
-print("ok")
+	if dude.Name ~= char then
+		local bgf = IT("BodyGyro", dude.Head)
+		bgf.CFrame = bgf.CFrame * CFrame.fromEulerAnglesXYZ(Rad(-90), 0, 0)
+		local val = IT("BoolValue", dude)
+		val.Name = "IsHit"
+		local ds = coroutine.wrap(function()
+			dude:WaitForChild("Head"):BreakJoints()
+			wait(0.5)
+			target = nil
+			coroutine.resume(coroutine.create(function()
+				for i, v in pairs(dude:GetChildren()) do
+					if v:IsA("Accessory") then
+						v:Destroy()
+					end
+					if v:IsA("Humanoid") then
+						v:Destroy()
+					end
+					if v:IsA("CharacterMesh") then
+						v:Destroy()
+					end
+					if v:IsA("Model") then
+						v:Destroy()
+					end
+					if v:IsA("Part") or v:IsA("MeshPart") then
+						for x, o in pairs(v:GetChildren()) do
+							if o:IsA("Decal") then
+								o:Destroy()
+							end
+						end
+						coroutine.resume(coroutine.create(function()
+							v.Material = "Neon"
+							v.CanCollide = false
+							--[[local PartEmmit1 = IT("ParticleEmitter", v)
+							PartEmmit1.LightEmission = 1
+							PartEmmit1.Texture = "rbxassetid://294291785"
+							PartEmmit1.Color = ColorSequence.new(maincolor.Color)
+							PartEmmit1.Rate = 150
+							PartEmmit1.Lifetime = NumberRange.new(1)
+							PartEmmit1.Size = NumberSequence.new(1,0)
+							PartEmmit1.Transparency = NumberSequence.new({
+								NumberSequenceKeypoint.new(0, 0, 0),
+								NumberSequenceKeypoint.new(1, 1, 0)
+							})
+							PartEmmit1.Speed = NumberRange.new(0, 0)
+							PartEmmit1.VelocitySpread = 30000
+							PartEmmit1.Rotation = NumberRange.new(-500, 500)
+							PartEmmit1.RotSpeed = NumberRange.new(-500, 500)]]
+							local BodPoss = IT("BodyPosition", v)
+							BodPoss.P = 3000
+							BodPoss.D = 1000
+							BodPoss.maxForce = Vector3.new(50000000000, 50000000000, 50000000000)
+							BodPoss.position = v.Position + Vector3.new(Mrandom(-15, 15), Mrandom(-15, 15), Mrandom(-15, 15))
+							v.Color = maincolor.Color
+							coroutine.resume(coroutine.create(function()
+								for i = 0, 49 do
+									swait(1)
+									v.Transparency = v.Transparency + 0.03
+								end
+								wait(0.5)
+								--PartEmmit1.Enabled = false
+								wait(3)
+								v:Destroy()
+								dude:Destroy()
+							end))
+						end))
+					end
+				end
+			end))
+		end)
+		ds()
+	end
 end
 
 function FindNearestHead(Position, Distance, SinglePlayer)
@@ -754,7 +967,57 @@ function Aura(bonuspeed, FastSpeed, type, pos, x1, y1, z1, value, color, outerpo
 end
 
 function SoulSteal(dude)
-print("little herobrine im cumming in your mom")
+if dude.Name ~= char then
+local bgf = IT("BodyGyro", dude.Head)
+bgf.CFrame = bgf.CFrame * CFrame.fromEulerAnglesXYZ(Rad(-90), 0, 0)
+local val = IT("BoolValue", dude)
+val.Name = "IsHit"
+local torso = (dude:FindFirstChild'Head' or dude:FindFirstChild'Torso' or dude:FindFirstChild'UpperTorso' or dude:FindFirstChild'LowerTorso' or dude:FindFirstChild'HumanoidRootPart')
+local soulst = coroutine.wrap(function()
+local soul = Instance.new("Part",dude)
+soul.Size = Vector3.new(1,1,1)
+soul.CanCollide = false
+soul.Anchored = false
+soul.Position = torso.Position
+soul.Transparency = 1
+local PartEmmit1 = IT("ParticleEmitter", soul)
+PartEmmit1.LightEmission = 1
+PartEmmit1.Texture = "rbxassetid://569507414"
+PartEmmit1.Color = ColorSequence.new(maincolor.Color)
+PartEmmit1.Rate = 250
+PartEmmit1.Lifetime = NumberRange.new(1.6)
+PartEmmit1.Size = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 1, 0),
+	NumberSequenceKeypoint.new(1, 0, 0)
+})
+PartEmmit1.Transparency = NumberSequence.new({
+	NumberSequenceKeypoint.new(0, 0, 0),
+	NumberSequenceKeypoint.new(1, 1, 0)
+})
+PartEmmit1.Speed = NumberRange.new(0, 0)
+PartEmmit1.VelocitySpread = 30000
+PartEmmit1.Rotation = NumberRange.new(-360, 360)
+PartEmmit1.RotSpeed = NumberRange.new(-360, 360)
+local BodPoss = IT("BodyPosition", soul)
+BodPoss.P = 3000
+BodPoss.D = 1000
+BodPoss.maxForce = Vector3.new(50000000000, 50000000000, 50000000000)
+BodPoss.position = torso.Position + Vector3.new(Mrandom(-15, 15), Mrandom(-15, 15), Mrandom(-15, 15))
+wait(1.6)
+soul.Touched:connect(function(hit)
+	if hit.Parent == char then
+	soul:Destroy()
+	end
+end)
+wait(1.2)
+while soul do
+	swait()
+	PartEmmit1.Color = ColorSequence.new(maincolor.Color)
+	BodPoss.Position = tors.Position
+end
+end)
+	soulst()
+	end
 end
 function FaceMouse()
 local	Cam = workspace.CurrentCamera
@@ -2356,18 +2619,6 @@ Screen1.Transparency = 0.3
 Screen1.Size = Vector3.new(6, 4, 0)
 Screen1.CanCollide = false
 Screen1.Locked = true
-local plr = game.Players.LocalPlayer
-local chr = plr.Character
-local hat = chr["Bacon MonitorAccessory"].Handle
-hat:BreakJoints()
-local Weld = Instance.new("Weld", game.Players.LocalPlayer.Character)
--- Tips for past John (Tescalus)
-
-Weld.Part1 = hat -- (Hat)
-Weld.Part0 = Screen1 -- What your welding the hat to (has to be a BasePart)
-
-Weld.C0 = CFrame.new(0,0,0)*CFrame.Angles(math.rad(0),math.rad(180),0) -- Angles
-print("Ran with no errors")
 Smooth(Screen1)
 local Screen1Weld = IT("Weld")
 Screen1Weld.Part0 = root
@@ -2384,18 +2635,6 @@ Screen2.Transparency = 0.3
 Screen2.Size = Vector3.new(6, 4, 0)
 Screen2.CanCollide = false
 Screen2.Locked = true
-local plr = game.Players.LocalPlayer
-local chr = plr.Character
-local hat = chr["Noob MonitorAccessory"].Handle
-hat:BreakJoints()
-local Weld = Instance.new("Weld", game.Players.LocalPlayer.Character)
--- Tips for past John (Tescalus)
-
-Weld.Part1 = hat -- (Hat)
-Weld.Part0 = Screen2 -- What your welding the hat to (has to be a BasePart)
-
-Weld.C0 = CFrame.new(0,0,0)*CFrame.Angles(math.rad(0),math.rad(180),0) -- Angles
-print("Ran with no errors")
 Smooth(Screen2)
 local Screen2Weld = IT("Weld")
 Screen2Weld.Part0 = root
@@ -2412,18 +2651,6 @@ Screen3.Transparency = 0.3
 Screen3.Size = Vector3.new(6, 4, 0)
 Screen3.CanCollide = false
 Screen3.Locked = true
-local plr = game.Players.LocalPlayer
-local chr = plr.Character
-local hat = chr["Dog MonitorAccessory"].Handle
-hat:BreakJoints()
-local Weld = Instance.new("Weld", game.Players.LocalPlayer.Character)
--- Tips for past John (Tescalus)
-
-Weld.Part1 = hat -- (Hat)
-Weld.Part0 = Screen3 -- What your welding the hat to (has to be a BasePart)
-
-Weld.C0 = CFrame.new(0,0,0)*CFrame.Angles(math.rad(0),math.rad(180),0) -- Angles
-print("Ran with no errors")
 Smooth(Screen3)
 local Screen3Weld = IT("Weld")
 Screen3Weld.Part0 = root
@@ -2797,7 +3024,7 @@ function Orb_Strike()
 		CamShake(2, 15)
 		for i, v in pairs(FindNearestHead(mouse.Hit.p, 24.5)) do
 			if v:FindFirstChild("Head") then
-				print("ok")
+				Eviscerate(v)
 			end
 		end
 	end))
