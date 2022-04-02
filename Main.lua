@@ -16,7 +16,13 @@ local Scripts = {
 	["AmythestNinja"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/AmythestNinja.lua",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
-		["HatID"] = "id1,id2,etc.",
+		["HatID"] = "",
+		["Remastered"] = false
+	},
+	["Hacker X"] = {
+		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Hacker%20X.lua",
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
+		["HatID"] = "",
 		["Remastered"] = false
 	},
 }
