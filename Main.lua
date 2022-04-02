@@ -5,12 +5,18 @@ local Scripts = {
 		["Link"] = "rawlinkhere",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
 		["HatID"] = "id1,id2,etc.",
-		["Remastered"] = true
+		["Remastered"] = false
 	},
 	["SpectrumGlitcher"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/SpectrumGlitcher.lua",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/959887401621282816/SpectrumGlitcher.png"),
 		["HatID"] = "",
+		["Remastered"] = false
+	},
+	["AmythestNinja"] = {
+		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/AmythestNinja.lua",
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
+		["HatID"] = "id1,id2,etc.",
 		["Remastered"] = false
 	},
 }
