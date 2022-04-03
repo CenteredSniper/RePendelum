@@ -182,7 +182,7 @@ task.spawn(function()
 			MainFrame.Settings.Discord.ImageColor3 = Color3.new(1,1,1)
 		end},
 	}
-	
+	getgenv.Fling = true
 	getgenv.Optimizer = false
 	for i,v in pairs(Buttons) do
 		MainFrame.Settings[v[1]].Image = getsynassetfromurl(v[3])
