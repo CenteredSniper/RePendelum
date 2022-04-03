@@ -1045,49 +1045,11 @@ v:Remove()
 end
 end
 
-shirt = Instance.new("Shirt", Character)
-shirt.Name = "Shirt"
-Character.Shirt.ShirtTemplate = "rbxassetid://863473913"
-
-leg1 = Instance.new("SpecialMesh", LeftLeg)
-leg1.MeshType = "FileMesh"
-leg1.Scale = Vector3.new(1, 1, 1)
-leg1.MeshId,leg1.TextureId = 'http://www.roblox.com/asset/?id=1243660338','http://www.roblox.com/asset/?id=1539341292'
-
-leg2 = Instance.new("SpecialMesh", RightLeg)
-leg2.MeshType = "FileMesh"
-leg2.Scale = Vector3.new(1, 1, 1)
-leg2.MeshId,leg2.TextureId = 'http://www.roblox.com/asset/?id=1243660660','http://www.roblox.com/asset/?id=1539341292'
-
-torso1 = Instance.new("CharacterMesh",Character)
-torso1.MeshId = 319346857
-torso1.BodyPart = "Torso"
-
-arm1 = Instance.new("CharacterMesh",Character)
-arm1.MeshId = 303665934
-arm1.OverlayTextureId = 1539341292
-arm1.BodyPart = "LeftArm"
-
-arm2 = Instance.new("CharacterMesh",Character)
-arm2.MeshId = 98332573
-arm2.OverlayTextureId = 6347925
-arm2.BodyPart = "RightArm"
 
 coroutine.wrap(function()
 while wait() do
-if secondform then
-Head.face.Texture = "rbxassetid://1127768638"
-else
-Head.face.Texture = "rbxassetid://629947734"
-end
 hum.WalkSpeed = 50
 hum.JumpPower = 125
-LeftArm.BrickColor = BrickColor.new("Really black")
-RightArm.BrickColor = BrickColor.new("Really black")
-Head.BrickColor = BrickColor.new("Really black")
-Torso.BrickColor = BrickColor.new("Really black")
-LeftLeg.BrickColor = BrickColor.new("Really black")
-RightLeg.BrickColor = BrickColor.new("Really black")
 end
 end)()
 godmode = coroutine.wrap(function()
@@ -1131,46 +1093,12 @@ end
 	return Returning		
 end
 
-ArtificialHB = Instance.new("BindableEvent", script)
-ArtificialHB.Name = "Heartbeat"
-script:WaitForChild("Heartbeat")
-
-frame = 1 / 60
-tf = 0
-allowframeloss = false
-tossremainder = false
-
-
-lastframe = tick()
-script.Heartbeat:Fire()
-
-
-game:GetService("RunService").Heartbeat:connect(function(s, p)
-	tf = tf + s
-	if tf >= frame then
-		if allowframeloss then
-			script.Heartbeat:Fire()
-			lastframe = tick()
-		else
-			for i = 1, math.floor(tf / frame) do
-				script.Heartbeat:Fire()
-			end
-			lastframe = tick()
-		end
-		if tossremainder then
-			tf = 0
-		else
-			tf = tf - frame * math.floor(tf / frame)
-		end
-	end
-end)
-
 function swait(num)
 	if num == 0 or num == nil then
-		game:service("RunService").Stepped:wait(0)
+		task.wait(1/60)
 	else
 		for i = 0, num do
-			game:service("RunService").Stepped:wait(0)
+			task.wait(1/60)
 		end
 	end
 end
