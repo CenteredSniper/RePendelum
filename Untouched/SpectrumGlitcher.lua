@@ -9182,6 +9182,7 @@ imgca2.Image = "rbxassetid://2406462507" --997291547,521073910,2312119891
 imgca2.ImageColor3 = Color3.new(0,0,0)
 
 local fling = task.spawn(function()
+	getgenv().RealRig[getgenv().Fling].BodyAngularVelocity.AngularVelocity = Vector3.new(-2000000000,-2000000000,-2000000000)
 	while task.wait() do
 		getgenv().RealRig[getgenv().Fling].CFrame = RightArm.CFrame
 	end
