@@ -54,7 +54,7 @@ local Selected = ""
 local setclipboard = setclipboard or print
 local getgenv = getgenv and getgenv() or _G
 
-
+getgenv.LoadLibrary = function(lib) return loadstring(game:HttpGet("https://raw.githubusercontent.com/Roblox/Core-Scripts/master/CoreScriptsRoot/Libraries/" .. lib .. ".lua"))() end
 local function reanimate()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/Kenzen/master/newnetlessreanimate.lua"))()
 	task.wait()
