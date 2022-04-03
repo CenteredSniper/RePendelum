@@ -1,3 +1,4 @@
+--credit to https://discord.id/?prefill=649302696473395200
 return function(URL)
 	local getsynasset, request = getsynasset or getcustomasset or error('invalid attempt to \'getsynassetfromurl\' (custom asset retrieval function expected)'), (syn and syn.request) or (http and http.request) or (request) or error('invalid attempt to \'getsynassetfromurl\' (http request function expected)')
 	local Extension, Types, URL = '', {'.png', '.webm'}, assert(tostring(type(URL)) == 'string', 'invalid argument #1 to \'getsynassetfromurl\' (string [URL] expected, got '..tostring(type(URL))..')') and URL or nil
@@ -11,18 +12,13 @@ return function(URL)
 	end
 
 	if Response.StatusCode == 200 and (Extension and table.find(Types, Extension)) then
-		if not isfile("PendelumAssets/"..TempFile..Extension) then
-			for i = 1, 15 do
-				local Letter, Lower = string.char(math.random(65, 90)), math.random(1, 5) == 3 and true or false
-				TempFile = (not TempFile and '' .. (Lower and Letter:lower() or Letter)) or (TempFile .. (Lower and Letter:lower() or Letter)) or nil
-			end
-
-			writefile("PendelumAssets/"..TempFile..Extension, Response.Body)
-
-			return getsynasset("PendelumAssets/"..TempFile..Extension)
-		else
-			return getsynasset("PendelumAssets/"..TempFile..Extension)
+		for i = 1, 15 do
+			local Letter, Lower = string.char(math.random(65, 90)), math.random(1, 5) == 3 and true or false
+			TempFile = (not TempFile and '' .. (Lower and Letter:lower() or Letter)) or (TempFile .. (Lower and Letter:lower() or Letter)) or nil
 		end
+		writefile("PendelumAssets/"..TempFile..Extension, Response.Body)
+
+		return getsynasset("PendelumAssets/"..TempFile..Extension)
 	elseif Response.StatusCode ~= 200 or not Extension then
 		warn('unexpected \'getsynassetfromurl\' Status Error: ' .. Response.StatusMessage .. ' ('..URL..')')
 	elseif not (Extension) then
