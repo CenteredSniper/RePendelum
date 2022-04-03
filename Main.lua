@@ -136,7 +136,7 @@ for i,v in pairs(Scripts) do
 	NewClone.Activated:Connect(function()
 		if Selected == i then
 			reanimate()
-			loadstring(game:HttpGet(v["Link"]))()
+			loadstring(game:HttpGet(v["Link"],true))()
 			Selected = ""
 			Elements.Preview.Image = ""
 		else
