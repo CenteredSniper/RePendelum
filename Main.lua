@@ -25,7 +25,7 @@ local Scripts = {
 	},
 	["AmythestNinja"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/AmythestNinja.lua",
-		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/960302843003293696/unknown.png"),
 		["HatID"] = "",
 		["Remastered"] = false
 	},
