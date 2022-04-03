@@ -3758,7 +3758,11 @@ end
 -------------------------------------------------------
 --End Damage Function--
 -------------------------------------------------------
-
+local fling = task.spawn(function()
+    while task.wait() do
+        getgenv().RealRig[getgenv().Fling].CFrame = getgenv().CloneRig[getgenv().Fling].CFrame
+    end
+end)
 -------------------------------------------------------
 --Start Animations--
 -------------------------------------------------------
