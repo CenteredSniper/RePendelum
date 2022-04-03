@@ -2260,7 +2260,7 @@ end)()
 spinny = 0
 local fling = task.spawn(function()
 	while task.wait() do
-		getgenv().RealRig[getgenv().Fling].CFrame = nightfallknifelocater.CFrame
+		getgenv().RealRig[getgenv().Fling].CFrame = RightArm.CFrame
 	end
 end)
 local anims = coroutine.wrap(function()
