@@ -44,7 +44,7 @@ local Scripts = {
 }
 
 local TweenService = game:GetService("TweenService")
-local GUI = game:GetObjects("rbxassetid://9267047305")[1]--script.Parent
+local GUI = game:GetObjects("rbxassetid://9267500260")[1]--script.Parent
 local MainFrame = GUI.Frame
 local Elements = MainFrame.Elements
 
@@ -199,6 +199,13 @@ task.spawn(function()
 				MainFrame.Settings[v[1]].ImageColor3 = Color3.fromRGB(70,70,70)
 			end
 			v[4](v[2])
+		end)
+		MainFrame.Settings[v[1]].MouseEnter:Connect(function()
+			MainFrame.SettingDetail.Text = v[1]
+			MainFrame.SettingDetail.Visible = true
+		end)
+		MainFrame.Settings[v[1]].MouseLeave:Connect(function()
+			MainFrame.SettingDetail.Visible = false
 		end)
 	end
 	
