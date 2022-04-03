@@ -257,10 +257,6 @@ tr1.LightInfluence = 0
 tr1.Color = ColorSequence.new(BrickColor.new("Eggplant").Color,BrickColor.new("Really black").Color)
 tr1.Transparency = NumberSequence.new(0, 1)
 
-shirt = Instance.new("Shirt", Character)
-shirt.Name = "Shirt"
-Character.Shirt.ShirtTemplate = "rbxassetid://302262616"
-
 particlecolor = ColorSequence.new(Color3.new(255, 255, 255))
 
 leftlocation = Instance.new("Part",LeftArm)
@@ -842,7 +838,7 @@ ov.Parent = mas2
 o2.Parent = ov
 o2.Material = Enum.Material.Neon
 o2.BrickColor = BrickColor.new("Alder")
-o2.Transparency = 0.1
+o2.Transparency = 1
 o2.Rotation = Vector3.new(-76.2299957, 74.5199966, -102.399994)
 o2.Anchored = true
 o2.Size = Vector3.new(0.104009911, 0.654072165, 0.0998701826)
@@ -857,7 +853,7 @@ o2.Color = Color3.new(0.705882, 0.501961, 1)
 o3.Parent = ov
 o3.Material = Enum.Material.Neon
 o3.BrickColor = BrickColor.new("Alder")
-o3.Transparency = 0.1
+o3.Transparency = 1
 o3.Rotation = Vector3.new(-88.5499954, -6.10999966, 86.6899948)
 o3.Anchored = true
 o3.Size = Vector3.new(0.10142266, 0.186803788, 0.632338703)
@@ -872,7 +868,7 @@ o3.Color = Color3.new(0.705882, 0.501961, 1)
 o4.Parent = ov
 o4.Material = Enum.Material.Neon
 o4.BrickColor = BrickColor.new("Alder")
-o4.Transparency = 0.1
+o4.Transparency = 1
 o4.Rotation = Vector3.new(103.110001, -74.5599976, -78.2399979)
 o4.Anchored = true
 o4.Size = Vector3.new(0.104009911, 0.472443491, 0.0998701826)
@@ -887,7 +883,7 @@ o4.Color = Color3.new(0.705882, 0.501961, 1)
 o5.Parent = ov
 o5.Material = Enum.Material.Neon
 o5.BrickColor = BrickColor.new("Alder")
-o5.Transparency = 0.1
+o5.Transparency = 1
 o5.Rotation = Vector3.new(-178.199997, 3.28999996, -105.129997)
 o5.Anchored = true
 o5.Size = Vector3.new(0.701161206, 0.538160622, 0.103492416)
@@ -903,7 +899,7 @@ o5.Color = Color3.new(0.705882, 0.501961, 1)
 o6.Parent = ov
 o6.Material = Enum.Material.Neon
 o6.BrickColor = BrickColor.new("Alder")
-o6.Transparency = 0.1
+o6.Transparency = 1
 o6.Rotation = Vector3.new(-178.199997, 3.28999996, -101.059998)
 o6.Anchored = true
 o6.Size = Vector3.new(0.701161206, 0.371020257, 0.103492416)
@@ -919,7 +915,7 @@ o6.Color = Color3.new(0.705882, 0.501961, 1)
 o7.Parent = ov
 o7.Material = Enum.Material.Neon
 o7.BrickColor = BrickColor.new("Alder")
-o7.Transparency = 0.1
+o7.Transparency = 1
 o7.Rotation = Vector3.new(-178.199997, 3.28999996, -96.1199951)
 o7.Anchored = true
 o7.Size = Vector3.new(0.701161206, 0.371020257, 0.103492416)
@@ -935,7 +931,7 @@ o7.Color = Color3.new(0.705882, 0.501961, 1)
 o8.Parent = ov
 o8.Material = Enum.Material.Neon
 o8.BrickColor = BrickColor.new("Alder")
-o8.Transparency = 0.1
+o8.Transparency = 1
 o8.Rotation = Vector3.new(-88.5499954, -6.10999966, -93.3099976)
 o8.Anchored = true
 o8.Size = Vector3.new(0.10142266, 0.186803788, 0.632338703)
@@ -950,7 +946,7 @@ o8.Color = Color3.new(0.705882, 0.501961, 1)
 o9m.Parent = ov
 o9m.Material = Enum.Material.Neon
 o9m.BrickColor = BrickColor.new("Alder")
-o9m.Transparency = 0.1
+o9m.Transparency = 1
 o9m.Rotation = Vector3.new(-178.199997, 3.28999996, -118.769997)
 o9m.Anchored = true
 o9m.Size = Vector3.new(1.56116068, 0.538160563, 0.102974951)
@@ -1038,13 +1034,6 @@ function weld2()
 end
 
 weld2()
-
-for i,v in pairs(Character:GetChildren()) do
-	if v.ClassName == "Pants" or v.ClassName == "Hat" or v.ClassName == "CharacterMesh" or v.ClassName == "Shirt Graphic" then
-		v:Remove()
-	end
-end
-
 
 coroutine.wrap(function()
 	while wait() do
@@ -1339,7 +1328,7 @@ mouse.KeyDown:connect(function(Press)
 				attacking = true
 				enemy = mouse.Target.Parent:FindFirstChildOfClass("Humanoid")
 				SOUND(Torso,862693565,10,false,5)
-				Character.Shirt.ShirtTemplate = "rbxassetid://0"
+				Character.Shirt.ShirtTemplate = ""
 				arm1.OverlayTextureId = 0
 				arm2.OverlayTextureId = 653553298
 				RightArm.BrickColor = BrickColor.new("Really black")
@@ -1430,7 +1419,7 @@ mouse.KeyDown:connect(function(Press)
 						energyplosion.BrickColor = BrickColor.new("Alder")
 						energyplosion.Anchored = true
 						energyplosion.CanCollide = false
-						energyplosion.Transparency = 0
+						energyplosion.Transparency = 1
 						energyplosion.Shape = "Ball"
 						energyplosion.Material = "Neon"
 						for i = 1, 20 do
@@ -1451,7 +1440,7 @@ mouse.KeyDown:connect(function(Press)
 					arm2.MeshId = 98332573
 					arm2.OverlayTextureId = 6347925
 					footsteps.Volume = 0
-					Character.Shirt.ShirtTemplate = "rbxassetid://863473913"
+					Character.Shirt.ShirtTemplate = ""
 
 					coroutine.wrap(function()
 						tauntsoundz = Instance.new("Sound", Head)
@@ -1482,7 +1471,7 @@ mouse.KeyDown:connect(function(Press)
 					arm2.MeshId = 98332573
 					arm2.OverlayTextureId = 6347925
 					footsteps.Volume = 0
-					Character.Shirt.ShirtTemplate = "rbxassetid://863473913"
+					Character.Shirt.ShirtTemplate = ""
 					debounce = false
 					attacking = false
 				end
@@ -1528,7 +1517,7 @@ mouse.KeyDown:connect(function(Press)
 				wshockwave.Size = Vector3.new(1,1,1)
 				wshockwave.CanCollide = false
 				wshockwave.Anchored = true
-				wshockwave.Transparency = .45
+				wshockwave.Transparency = 1
 				wshockwave.BrickColor = BrickColor.new("Alder")
 				wshockwave.CFrame = CFrame.new(rightlocation.Position) * CFrame.Angles(math.rad(math.random(-180,180)),0,math.rad(math.random(-180,180)))
 				local wshockwavemesh = Instance.new("SpecialMesh", wshockwave)
@@ -1556,7 +1545,7 @@ mouse.KeyDown:connect(function(Press)
 			bullet.CanCollide = false
 			bullet.Anchored = false
 			bullet.Size = Vector3.new(2,2,2)
-			bullet.Transparency = .5
+			bullet.Transparency = 1
 			bullet.Shape = "Ball"
 			bullet.Material = "Neon"
 			bullet.BrickColor = BrickColor.new("Alder")
@@ -1605,7 +1594,7 @@ mouse.KeyDown:connect(function(Press)
 				wshockwave.Size = Vector3.new(1,1,1)
 				wshockwave.CanCollide = false
 				wshockwave.Anchored = true
-				wshockwave.Transparency = .45
+				wshockwave.Transparency = 1
 				wshockwave.BrickColor = BrickColor.new("Alder")
 				wshockwave.CFrame = CFrame.new(bullet.Position) * CFrame.Angles(math.rad(math.random(-180,180)),0,math.rad(math.random(-180,180)))
 				local wshockwavemesh = Instance.new("SpecialMesh", wshockwave)
@@ -1686,7 +1675,7 @@ mouse.KeyDown:connect(function(Press)
 						wshockwave.Size = Vector3.new(1,1,1)
 						wshockwave.CanCollide = false
 						wshockwave.Anchored = true
-						wshockwave.Transparency = .45
+						wshockwave.Transparency = 1
 						wshockwave.BrickColor = BrickColor.new("Alder")
 						wshockwave.CFrame = CFrame.new(rightlocation.Position) * CFrame.Angles(math.rad(math.random(-180,180)),0,math.rad(math.random(-180,180)))
 						local wshockwavemesh = Instance.new("SpecialMesh", wshockwave)
@@ -1714,7 +1703,7 @@ mouse.KeyDown:connect(function(Press)
 					bullet.CanCollide = false
 					bullet.Anchored = false
 					bullet.Size = Vector3.new(2,2,2)
-					bullet.Transparency = .5
+					bullet.Transparency = 1
 					bullet.Shape = "Ball"
 					bullet.Material = "Neon"
 					bullet.BrickColor = BrickColor.new("Alder")
@@ -1769,7 +1758,7 @@ mouse.KeyDown:connect(function(Press)
 						wshockwave.Size = Vector3.new(1,1,1)
 						wshockwave.CanCollide = false
 						wshockwave.Anchored = true
-						wshockwave.Transparency = .45
+						wshockwave.Transparency = 1
 						wshockwave.BrickColor = BrickColor.new("Alder")
 						wshockwave.CFrame = CFrame.new(bullet.Position) * CFrame.Angles(math.rad(math.random(-180,180)),0,math.rad(math.random(-180,180)))
 						local wshockwavemesh = Instance.new("SpecialMesh", wshockwave)
@@ -2075,7 +2064,7 @@ mouse.KeyDown:connect(function(Press)
 			wind.Size = Vector3.new(0.5, 0.5, 0.5)
 			wind.Material = "Neon"
 			wind.BrickColor = BrickColor.new("Really white")
-			wind.Transparency = .5
+			wind.Transparency = 1
 			wind.Anchored = true
 			wind.CanCollide = false
 			wind.CFrame = tornadotwistloc.CFrame * CFrame.Angles(math.rad(90),0,0)
@@ -2086,7 +2075,7 @@ mouse.KeyDown:connect(function(Press)
 			wind2.Size = Vector3.new(0.5, 0.5, 0.5)
 			wind2.Material = "Neon"
 			wind2.BrickColor = BrickColor.new("Really white")
-			wind2.Transparency = .5
+			wind2.Transparency = 1
 			wind2.Anchored = true
 			wind2.CanCollide = false
 			wind2.CFrame = tornadotwistloc.CFrame * CFrame.Angles(math.rad(90),0,0)
@@ -2331,3 +2320,22 @@ local anims = coroutine.wrap(function()
 end)
 anims()
 warn("He's here. Made by Supr14")
+local function align(hat,cframe,part1,part0)
+local handle = hat.Handle
+if handle:FindFirstChild("AccessoryWeld") then
+local acc = handle.AccessoryWeld
+if part1 then acc.Part1 = part1 end
+if part0 then acc.Part0 = part0 end
+acc.C0 = cframe
+end
+end
+local function align(hat,cframe,part1,part0)
+local handle = hat.Handle
+if handle:FindFirstChild("AccessoryWeld") then
+local acc = handle.AccessoryWeld
+if part1 then acc.Part1 = part1 end
+if part0 then acc.Part0 = part0 end
+acc.C0 = cframe
+end
+end
+align(game.Players.LocalPlayer.Character["Dark Matter Katana"],CFrame.new(0,0,-1) * CFrame.Angles(math.rad(-45),math.rad(-90),math.rad(0)),game.Players.LocalPlayer.Character["Right Arm"])
