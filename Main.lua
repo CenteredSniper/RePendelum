@@ -1,12 +1,18 @@
-local getsynassetfromurl = loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/getsynassetfromurl.lua"))()
+if isfolder and not isfolder("PendelumAssets") then
+	makefolder("PendelumAssets")
+elseif not isfolder then
+	error("No filesystem support")
+end
+local getsynassetfromurl = loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/getsynassetfromurl.lua",true))()
 
 local Scripts = {
+	--[[
 	["NameHere"] = {
 		["Link"] = "rawlinkhere",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
 		["HatID"] = "id1,id2,etc.",
 		["Remastered"] = false
-	},
+	},]]
 	["SpectrumGlitcher"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/SpectrumGlitcher.lua",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/959887401621282816/SpectrumGlitcher.png"),
@@ -33,7 +39,8 @@ local Scripts = {
 	},
 }
 
-local GUI = game:GetObjects("rbxassetid://9260677580")[1]--script.Parent
+local TweenService = game:GetService("TweenService")
+local GUI = game:GetObjects("rbxassetid://9267047305")[1]--script.Parent
 local MainFrame = GUI.Frame
 local Elements = MainFrame.Elements
 
@@ -41,6 +48,8 @@ local Sine = 0
 local Toggle = true
 local Selected = ""
 local setclipboard = setclipboard or print
+local getgenv = getgenv and getgenv() or _G
+
 
 local function reanimate()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/Kenzen/master/newnetlessreanimate.lua"))()
@@ -66,12 +75,12 @@ Elements.CopyHats.Activated:Connect(function()
 		setclipboard(tostring(Scripts[Selected]["HatID"]))
 	end
 end)
-Elements.CopyCredits.Activated:Connect(function()
-	setclipboard[[Original Developer - https://discord.id/?prefill=801256997261017100
-Remake Main Developer - https://discord.id/?prefill=806621844291584001
-Convert Developers - https://discord.id/?prefill=786897804664635400,https://discord.id/?prefill=307781359244541953
-getsynassetfromurl function - https://discord.id/?prefill=649302696473395200]]
-end)
+--Elements.CopyCredits.Activated:Connect(function()
+--	setclipboard[[Original Developer - https://discord.id/?prefill=801256997261017100
+--Remake Main Developer - https://discord.id/?prefill=806621844291584001
+--Convert Developers - https://discord.id/?prefill=786897804664635400,https://discord.id/?prefill=307781359244541953
+--getsynassetfromurl function - https://discord.id/?prefill=649302696473395200]]
+--end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
 	Sine += 1; Elements.Pendelum.Rotation = math.cos(Sine/30)*30
@@ -135,6 +144,78 @@ for i,v in pairs(Scripts) do
 end
 
 task.spawn(function()
+	-- Settings Assets
+	local SettingsOpen = false
+	local Buttons = {
+		{"Fling",true,"https://cdn.discordapp.com/attachments/959886594133868624/959997893446598676/fling.png",function(Val)
+			getgenv.Fling = Val
+		end},
+		{"PermaDeath",true,"https://cdn.discordapp.com/attachments/959886594133868624/959997895048847360/permadeath.png",function(Val)
+			getgenv.GodMode = Val
+		end},
+		{"Collisions",true,"https://cdn.discordapp.com/attachments/959886594133868624/959997892867813426/collisions.png",function(Val)
+			getgenv.Collisions = Val
+		end},
+		{"MovementVelocity",false,"https://cdn.discordapp.com/attachments/959886594133868624/959997894562291782/movementvelocity.png",function(Val)
+			getgenv.MovementVelocity = Val
+		end},
+		{"Animate",true,"https://cdn.discordapp.com/attachments/959886594133868624/959997892351901727/animate.png",function(Val)
+			getgenv.AutoAnimate = Val
+		end},
+		{"Claim2",false,"https://cdn.discordapp.com/attachments/959886594133868624/959997892674879518/claim2.png",function(Val)
+			getgenv.Claim2 = Val
+		end},
+		{"Optimizer",false,"https://cdn.discordapp.com/attachments/959886594133868624/959997894818136074/Optimizer.png",function(Val)
+			getgenv.Optimizer = Val
+		end},
+		{"Discord",true,"https://cdn.discordapp.com/attachments/959886594133868624/959997893153001492/discord.png",function()
+			setclipboard("https://discord.gg/Pq8PXbjtz8")
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+				Title = "Copied Discord",
+				Text = "Set clipboard as invite link.",
+				Duration = 5,
+			})
+			MainFrame.Settings.Discord.ImageColor3 = Color3.new(1,1,1)
+		end},
+	}
+	
+	getgenv.Optimizer = false
+	for i,v in pairs(Buttons) do
+		MainFrame.Settings[v[1]].Image = getsynassetfromurl(v[3])
+		if v[2] then
+			MainFrame.Settings[v[1]].ImageColor3 = Color3.new(1,1,1)
+		else
+			MainFrame.Settings[v[1]].ImageColor3 = Color3.fromRGB(70,70,70)
+		end
+		MainFrame.Settings[v[1]].Activated:Connect(function()
+			v[2] = not v[2]
+			if v[2] then
+				MainFrame.Settings[v[1]].ImageColor3 = Color3.new(1,1,1)
+			else
+				MainFrame.Settings[v[1]].ImageColor3 = Color3.fromRGB(70,70,70)
+			end
+			v[4](v[2])
+		end)
+	end
+	
+	Elements.OpenSettings.Activated:Connect(function()
+		SettingsOpen = not SettingsOpen
+		
+		if SettingsOpen then
+			for i,v in pairs(Buttons) do
+				TweenService:Create(MainFrame.Settings[v[1]],TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.Out), {Position = UDim2.new(0,MainFrame.Settings[v[1]].Position.X.Offset,0,0)}):Play()
+				task.wait(0.05)
+			end
+		else
+			for i,v in pairs(Buttons) do
+				TweenService:Create(MainFrame.Settings[v[1]],TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.In), {Position = UDim2.new(0,MainFrame.Settings[v[1]].Position.X.Offset,-1.5,0)}):Play()
+				task.wait(0.05)
+			end
+		end
+	end)
+end)
+
+task.spawn(function()
 	local function randomString()
 		local length = math.random(10,20)
 		local array = {}
@@ -143,7 +224,7 @@ task.spawn(function()
 		end
 		return table.concat(array)
 	end
-	Elements.Pendelum.Pendelum.ZIndex = 3
+	
 	GUI.Name = randomString()
 	if syn then
 		syn.protect_gui(GUI)
