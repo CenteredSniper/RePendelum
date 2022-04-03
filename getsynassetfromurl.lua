@@ -11,14 +11,18 @@ return function(URL)
 	end
 
 	if Response.StatusCode == 200 and (Extension and table.find(Types, Extension)) then
-		for i = 1, 15 do
-			local Letter, Lower = string.char(math.random(65, 90)), math.random(1, 5) == 3 and true or false
-			TempFile = (not TempFile and '' .. (Lower and Letter:lower() or Letter)) or (TempFile .. (Lower and Letter:lower() or Letter)) or nil
+		if not isfile("PendelumAssets/"..TempFile..Extension) then
+			for i = 1, 15 do
+				local Letter, Lower = string.char(math.random(65, 90)), math.random(1, 5) == 3 and true or false
+				TempFile = (not TempFile and '' .. (Lower and Letter:lower() or Letter)) or (TempFile .. (Lower and Letter:lower() or Letter)) or nil
+			end
+
+			writefile("PendelumAssets/"..TempFile..Extension, Response.Body)
+
+			return getsynasset("PendelumAssets/"..TempFile..Extension)
+		else
+			return getsynasset("PendelumAssets/"..TempFile..Extension)
 		end
-
-		writefile(TempFile..Extension, Response.Body)
-
-		return getsynasset(TempFile..Extension)
 	elseif Response.StatusCode ~= 200 or not Extension then
 		warn('unexpected \'getsynassetfromurl\' Status Error: ' .. Response.StatusMessage .. ' ('..URL..')')
 	elseif not (Extension) then
