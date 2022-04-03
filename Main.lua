@@ -47,6 +47,12 @@ local Scripts = {
 		["HatID"] = "",
 		["Remastered"] = false
 	},
+	["Joy"] = {
+		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Joy.lua",
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/960300880807211170/unknown.png"),
+		["HatID"] = "",
+		["Remastered"] = false
+	},
 }
 
 local TweenService = game:GetService("TweenService")
