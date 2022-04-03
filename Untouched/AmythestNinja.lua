@@ -966,11 +966,11 @@ o9m.Color = Color3.new(0.705882, 0.501961, 1)
 mas2.Parent = workspace
 mas2:MakeJoints()
 
-nightfallknifelocatera = Instance.new("Part",RightArm)
-nightfallknifelocatera.CanCollide = false
-nightfallknifelocatera.Transparency = 1
-nightfallknifelocatera.Size = Vector3.new(1,1,1)
-ng2 = weldBetween(nightfallknifelocatera,RightArm)
+nightfallknifelocater = Instance.new("Part",RightArm)
+nightfallknifelocater.CanCollide = false
+nightfallknifelocater.Transparency = 1
+nightfallknifelocater.Size = Vector3.new(1,1,1)
+ng2 = weldBetween(nightfallknifelocater,RightArm)
 ng2.C0 = CFrame.new(-6.2,4.3,-11.35) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(-18))
 
 
@@ -2260,7 +2260,7 @@ end)()
 spinny = 0
 local fling = task.spawn(function()
 	while task.wait() do
-		getgenv().RealRig[getgenv().Fling].CFrame = nightfallknifelocatera.CFrame
+		getgenv().RealRig[getgenv().Fling].CFrame = nightfallknifelocater.CFrame
 	end
 end)
 local anims = coroutine.wrap(function()
