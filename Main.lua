@@ -1,6 +1,10 @@
 if isfolder and not isfolder("PendelumAssets") then
 	makefolder("PendelumAssets")
-elseif not isfolder then
+elseif isfolder and isfolder("PendelumAssets") then
+	for i,v in pairs(listfiles("PendelumAssets")) do
+		delfile(v)
+	end
+else
 	error("No filesystem support")
 end
 local getsynassetfromurl = loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/getsynassetfromurl.lua",true))()
