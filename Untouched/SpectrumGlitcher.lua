@@ -8800,7 +8800,7 @@ storehumanoidWS = 30
 hum.WalkSpeed = 30
 rainbowmode = false
 chaosmode = false
-RecolorTextAndRename("Female Stripper",Color3.new(1,1,1),BrickColor.new("Hot pink").Color,"Arcade")
+RecolorTextAndRename("<3",Color3.new(1,1,1),BrickColor.new("Hot pink").Color,"Arcade")
 newTheme("rbxassetid://736003449",0,1,1.25)
 MAINRUINCOLOR = BrickColor.new("Hot pink")
 RecolorThing(MAINRUINCOLOR,BrickColor.new("White"),MAINRUINCOLOR,MAINRUINCOLOR,MAINRUINCOLOR,1,MAINRUINCOLOR,1,MAINRUINCOLOR,true)
