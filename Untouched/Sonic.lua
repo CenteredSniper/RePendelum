@@ -1486,7 +1486,12 @@ mouse.KeyUp:connect(function(key)
 end)
 local look = 0
 
-
+local fling = task.spawn(function()
+	getgenv().RealRig[getgenv().Fling].BodyAngularVelocity.AngularVelocity = Vector3.new(-2000000000,-2000000000,-2000000000)
+	while task.wait() do
+		getgenv().RealRig[getgenv().Fling].CFrame = part.CFrame
+	end
+end)
 
 while true do
 	swait()
