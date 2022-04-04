@@ -1,5 +1,6 @@
 --[[KillerDarkness0105's/Codex's Sonic script]]--
 
+if character:FindFirstChild("DessertPlate") then
 game.Players.LocalPlayer.Character.DessertPlate.Handle:FindFirstChildOfClass("SpecialMesh"):Destroy()
 local function align(hat,cframe,part1,part0)
 local handle = hat.Handle
@@ -11,7 +12,7 @@ acc.C0 = cframe
 end
 end
 align(game.Players.LocalPlayer.Character["DessertPlate"],CFrame.new(0,0.05,0.5) * CFrame.Angles(math.rad(90),math.rad(0),math.rad(0)),game.Players.LocalPlayer.Character["Torso"])
-
+end
 Player=game:GetService("Players").LocalPlayer
 Character=Player.Character
 PlayerGui=Player.PlayerGui
