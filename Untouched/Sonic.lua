@@ -10,7 +10,7 @@ if part0 then acc.Part0 = part0 end
 acc.C0 = cframe
 end
 end
-align(game.Players.LocalPlayer.Character["DessertPlate"],CFrame.new(0,0.7,-0.1) * CFrame.Angles(math.rad(180),math.rad(0),math.rad(0)),game.Players.LocalPlayer.Character["Torso"])
+align(game.Players.LocalPlayer.Character["DessertPlate"],CFrame.new(0,0.05,0.5) * CFrame.Angles(math.rad(90),math.rad(0),math.rad(0)),game.Players.LocalPlayer.Character["Torso"])
 
 Player=game:GetService("Players").LocalPlayer
 Character=Player.Character
