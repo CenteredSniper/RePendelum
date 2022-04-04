@@ -1,5 +1,19 @@
 --[[KillerDarkness0105's/Codex's Sonic script]]--
 
+if game.Players.LocalPlayer.Character:FindFirstChild("DessertPlate") then
+game.Players.LocalPlayer.Character.DessertPlate.Handle:FindFirstChildOfClass("SpecialMesh"):Destroy()
+local function align(hat,cframe,part1,part0)
+local handle = hat.Handle
+if handle:FindFirstChild("AccessoryWeld") then
+local acc = handle.AccessoryWeld
+if part1 then acc.Part1 = part1 end
+if part0 then acc.Part0 = part0 end
+acc.C0 = cframe
+end
+end
+align(game.Players.LocalPlayer.Character["DessertPlate"],CFrame.new(0,0.05,0.5) * CFrame.Angles(math.rad(90),math.rad(0),math.rad(0)),game.Players.LocalPlayer.Character["Torso"])
+end
+
 Player=game:GetService("Players").LocalPlayer
 Character=Player.Character
 PlayerGui=Player.PlayerGui
@@ -1728,15 +1742,3 @@ while true do
 	end
 
 end
-if character:FindFirstChild("DessertPlate") then
-game.Players.LocalPlayer.Character.DessertPlate.Handle:FindFirstChildOfClass("SpecialMesh"):Destroy()
-local function align(hat,cframe,part1,part0)
-local handle = hat.Handle
-if handle:FindFirstChild("AccessoryWeld") then
-local acc = handle.AccessoryWeld
-if part1 then acc.Part1 = part1 end
-if part0 then acc.Part0 = part0 end
-acc.C0 = cframe
-end
-end
-align(game.Players.LocalPlayer.Character["DessertPlate"],CFrame.new(0,0.05,0.5) * CFrame.Angles(math.rad(90),math.rad(0),math.rad(0)),game.Players.LocalPlayer.Character["Torso"])
