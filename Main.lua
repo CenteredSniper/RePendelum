@@ -44,7 +44,7 @@ local Scripts = {
 	["Sonic"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Sonic.lua",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/960573367470141460/unknown.png"),
-		["HatID"] = "",
+		["HatID"] = "8862923874*",
 		["Remastered"] = false
 	},
 	["Joy"] = {
