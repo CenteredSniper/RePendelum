@@ -44,13 +44,19 @@ local Scripts = {
 	["Sonic"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Sonic.lua",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/960573367470141460/unknown.png"),
-		["HatID"] = "8862923874*",
+		["HatID"] = "8862923874",
 		["Remastered"] = false
 	},
 	["Joy"] = {
 		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Joy.lua",
 		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/960300880807211170/unknown.png"),
 		["HatID"] = "",
+		["Remastered"] = false
+	},
+		["Galacta"] = {
+		["Link"] = "https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/Untouched/Galacta.lua",
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/959886594133868624/966267616618504202/unknown.png"),
+		["HatID"] = "5891821816, 4315489767",
 		["Remastered"] = false
 	},
 }
