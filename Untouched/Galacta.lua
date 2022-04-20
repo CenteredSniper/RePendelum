@@ -1,5 +1,4 @@
 --Galacta, made by shackluster
-loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/Kenzen/master/newnetlessreanimate.lua",true))()
 if game.Players.LocalPlayer.Character:FindFirstChild("shield") then
 local function align(hat,cframe,part1,part0)
 local handle = hat.Handle
